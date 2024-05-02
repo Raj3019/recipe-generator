@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'food.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'recipes',
-        'USER': 'root',
-        'PASSWORD': 'Rajchauhan30',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': '#',
+        'USER': '#',
+        'PASSWORD': '#',
+        'HOST': '#',
+        'PORT': '#',
     }
 }
 
