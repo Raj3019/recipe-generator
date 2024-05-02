@@ -1,0 +1,113 @@
+{#{% include 'navbar.html ' %}#}
+{% load static %}
+{% load split %}
+{% load upper %}
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Search</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{% endfor %}
+<body>
+<form>
+    <div class="mb-3">
+        <label for="search" class="form-label">Enter Ingredients:</label>
+        <input type="search" class="form-control" id="ingredients" name="ingredients_contain"
+              placeholder="Enter Ingredients"/>
+    </div>
+    <div class="mb-3">
+        <label for="search" class="form-label">Enter cuisine:</label>
+        <input type="search" class="form-control" id="cuisine" name="cuisine_name" placeholder="Enter cuisine"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<hr/>
+
+
+<!-- <table class="table table-bordered">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Recipe ID</th>
+        <th scope="col">Recipe Name</th>
+        <th scope="col">Ingredients</th> -->
+<!-- <th scope="col">Instructions</th> -->
+<!-- <th scope="col">Cuisine</th>
+            <th scope="col">Total Time in mins</th>
+            <th scope="col">Ingredient count</th>
+          </tr>
+        </thead>-->
+{#        <tbody class="table-group-divider">#}
+{#            {% for recipe in queryset %}#}
+{#          <tr>#}
+{#            <th scope="row">{{recipe.id}}</th>#}
+{#            <td>{{recipe.recipe_name}}</td>#}
+{#            <td>{{recipe.ingredients}}</td>#}
+{#    <td>{{recipe.instructions}}</td> #}
+{#            <td>{{recipe.cuisine}}</td>#}
+{#            <td>{{recipe.totaltimeinmins}}</td>#}
+{#            <td>{{recipe.ingredientcount}}</td>#}
+{#          </tr>#}
+{#          {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+
+{% for recipe in page_obj %}
+      <div class="recipe">
+        <img src="{{ recipe.imageurl }}" alt="Recipe Image" width="200">
+        <hr>
+        <h3>Recipe ID: {{ recipe.id }}</h3>
+        <hr>
+        <h3>Name: {{ recipe.recipe_name }}</h3>
+        <hr>
+        <h4>Cuisine: {{ recipe.cuisine }}</h4>
+        <hr>
+        <p><strong>Ingredients:</strong> {{ recipe.ingredients |capitalize_first_letter_of_words }}</p>
+        <hr>
+        <!-- <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>   -->
+        <h3>Instructions:</h3>
+        <ul>
+            {% for instruction in recipe.instructions|split_instructions %}
+                <li>{{ instruction }}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <p><strong>Time:</strong> {{ recipe.totaltimeinmins }} minutes</p>
+    </div>
+    <hr/>
+{% endfor %}
+
+    <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a href="?page=1">&laquo; first</a>
+              <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+    
+          <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+    
+          {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">next</a>
+              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+    </div>
+  </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+{% load static %}
+{% load split %}
+{% load upper %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>steps to make a dish</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Chelsea Market' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-chef-32.png' %}">
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% include 'navbar2.html' %}
+    <!-- <section class="nav-section">
+        <nav id="navBar">
+            <a href="index.html"><img src="Images/logo white.png" class="logo"></a>
+            <div id="mainListDiv" class="main_list hide-menu-mobile">
+                <ul class="nav-links">
+                    <li><a href="#">RECIPES</a></li>
+                    <li><a href="index.html#head2">ABOUT</a></li>
+                    <li><a href="login.html">SIGN IN</a></li>
+                </ul>
+            </div>
+            <div class="hide-menu-bar">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+    </section> -->
+
+    <!-- Steps Page -->
+{% if recipe %}
+    <div class="steps-container">
+        <div class="new-container">
+            <div class="recipe-image">
+                <img src="{{ recipe.imageurl }}" alt="Dish Image">
+            </div>
+            <div class="recipe-details">
+                <h1>Recipe Name:- {{ recipe.recipe_name }}</h1>
+                <p>Cuisine: {{ recipe.cuisine }}</p>
+                <p>Preparation Time: {{ recipe.totaltimeinmins }} minutes</p>
+                <p><strong>Ingredients:</strong> {{ recipe.ingredients | capitalize_first_letter_of_words }}</p>
+            </div>
+        </div>
+
+        <div class="Steps">
+            <h2>Steps to Make Recipe:</h2>
+            <ul>
+                {% for instruction in recipe.instructions|split_instructions %}
+                    <li>{{ instruction }}</li>
+                {% endfor %}
+            </ul>
+            <div class="row" id="back-btn">
+                <div class="col-md-12 text-center">
+                    <a href="{% url 'food' %}"><button class="submit-btn">GO BACK TO RECIPE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>No recipe found.</p>
+{% endif %}
+
+    <!-------footer------>
+    {% include 'footer.html' %}
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">company</a></li>
+                        <li><a href="#">staff</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms and Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">cusine</a></li>
+                        <li><a href="#">recipes</a></li>
+                        <li><a href="#">drinks</a></li>
+                        <li><a href="#">make a dish</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">+91 8600666455</a></li>
+                        <li><a href="#">project@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

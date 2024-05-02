@@ -1,0 +1,8 @@
+{% autoescape off %}
+        Welcome to Dish Discovery!
+        Hello {{ name }}!
+
+        Please confirm your email by clicking on following link:
+
+        Confirmation link : http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape  %}

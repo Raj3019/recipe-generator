@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-chef-32.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    {% include 'navbar2.html' %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong>{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endfor %}
+
+    <!-- <section class="nav-section">
+        <nav id="navBar">
+            <a href="index.html"><img src="Images/logo white.png" class="logo"></a>
+            <div id="mainListDiv" class="main_list hide-menu-mobile">
+                <ul class="nav-links">
+                    <li><a href="recipe.html">RECIPES</a></li>
+                    <li><a href="index.html#head2">ABOUT</a></li>
+                    <li><a href="login.html">SIGN IN</a></li>
+                </ul>
+            </div>
+            <div class="hide-menu-bar">
+                <i class="fas fa-bars menu-toggle"></i>
+                </div>
+        </nav>
+    </section> -->
+
+    <!-- Signup-section -->
+
+    <div class="signup-container">
+        <div class="left-section">
+            <p>We are  ready to <br> serve you !!!</p>
+            <img src="{% static 'images/transperant/login-img.png' %}" alt="Cook Image">
+        </div>
+        <div class="right-section">
+            <div class="form-container">
+                <h2>SIGN IN</h2>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="pass1" required>
+                    </div>
+                    <button type="submit">Sign in</button>
+                </form>
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">company</a></li>
+                        <li><a href="#">staff</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms and Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">cusine</a></li>
+                        <li><a href="#">recipes</a></li>
+                        <li><a href="#">drinks</a></li>
+                        <li><a href="#">make a dish</a></li>
+                        <li><a href="#">make a meal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">+91 8600666455</a></li>
+                        <li><a href="#">project123@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

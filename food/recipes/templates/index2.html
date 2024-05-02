@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISH DISCOVERY</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{#    <link rel="stylesheet" href="script.js">#}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Chelsea Market' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-chef-32.png' %}">
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% include 'navbar2.html'%}
+    <!-- <section class="nav-section">
+        <nav id="navBar">
+            <a href="index.html"><img src="Images/logo white.png" class="logo"></a>
+            <div id="mainListDiv" class="main_list hide-menu-mobile">
+                <ul class="nav-links">
+                    <li><a href="recipe.html">RECIPES</a></li>
+                    <li><a href="#head2">ABOUT</a></li> 
+                    <li><a href="login.html">SIGN IN</a></li>
+                </ul>
+            </div>
+            <div class="hide-menu-bar">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+    </section> -->
+
+    <!-- Hungry Section -->
+
+
+    <div class="header">
+        <div class="container">
+            <h1 class="question">ARE YOU HUNGRY ?</h1>
+            <img src="{% static 'images/maindishimg.png' %}" alt="" class="food-img">
+            <a href="recipe.html" class="make-dish-btn">MAKE A DISH</a>
+            <div class="passage">
+                <p>Our recipe maker simplifies the art of cooking, offering a Seamless platform for both beginners and
+                    seasoned chefs. Explore diverse recipes, customize ingredients, and create mouthwatering dishes
+                    effortlessly.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRINKS SECTION -->
+
+    <div class="header3">
+        <div class="container">
+            <h1 class="question">CHEERS TO FLAVOURFUL <br> DISCOVERIES</h1>
+            <img src="{% static 'images/drinks2.png' %}" alt="" class="food-img">
+            <div class="passage">
+                <p>Explore a diverse array of beverages, from refreshing juices to artisanal cocktails. Immerse yourself
+                    in a world of flavor, where every sip is a celebration. Elevate your beverage experience and
+                    discover your new favorite drink destination right here.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US SECTION -->
+    <div class="header2" id="head2">
+        <div class="title">
+            <h1>ABOUT US</h1>
+        </div>
+        <p class="abt-para">
+            At DISH DISCOVERY, we proudly present a culinary, where innovation and convenience converge—welcome
+            to our Recipe Generator universe. We understand that today's food enthusiasts crave both creativity and
+            simplicity in the kitchen. Our platform is meticulously crafted to transform cooking into a joyful
+            exploration, ensuring that every meal becomes a delightful experience.
+            Discover a treasure trove of diverse and inspiring recipes tailored to your preferences. Whether you're
+            a seasoned chef or a kitchen novice, our goal is to empower you to create extraordinary dishes
+            effortlessly. At DISH DISCOVERY, we are passionate about demystifying the art of cooking, making it
+            accessible to all. Join us on this gastronomic journey, and let our Recipe Generator redefine the way
+            you approach culinary adventures—because we believe that every meal should be a celebration of flavor,
+            creativity, and sheer enjoyment.
+        </p>
+    </div>
+
+    {% include 'footer.html' %}
+    <!-------footer------>
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">company</a></li>
+                        <li><a href="#">staff</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms and Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">cusine</a></li>
+                        <li><a href="#">recipes</a></li>
+                        <li><a href="#">drinks</a></li>
+                        <li><a href="#">make a dish</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">+91 8600666455</a></li>
+                        <li><a href="#">project@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

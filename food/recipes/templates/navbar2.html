@@ -1,0 +1,55 @@
+{#{% load static %}#}
+{##}
+{#<html>#}
+{#<link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+{#<section class="nav-section">#}
+{#    <nav id="navBar">#}
+{#        <a href="/"><img src="{% static 'images/logowhite.png' %}" class="logo"></a>#}
+{#        <div id="mainListDiv" class="main_list hide-menu-mobile">#}
+{#            <ul class="nav-links">#}
+{#                <li><a href="{% url 'food' %}">RECIPES</a></li>#}
+{#                <li><a href="{% url 'index' %}#head2">ABOUT</a></li>#}
+{#                <li><a href="{% url 'signin' %}">SIGN IN</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#        <div class="hide-menu-bar">#}
+{#            <i class="fas fa-bars menu-toggle"></i>#}
+{#        </div>#}
+{#    </nav>#}
+{#</section>#}
+{#</html>#}
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section class="nav-section">
+        <nav id="navBar">
+            <a href="/"><img src="{% static 'images/logowhite.png' %}" alt="Logo" class="logo"></a>
+            <div id="mainListDiv" class="main_list hide-menu-mobile">
+                <ul class="nav-links">
+                    <li><a href="{% url 'food' %}">RECIPES</a></li>
+                    <li><a href="{% url 'index' %}#head2">ABOUT</a></li>
+                    {% if user.is_authenticated %}
+                        <li><span class="hello-text">Hello {{ request.session.username }}</span></li>
+                        <li><a href="/signout">Sign Out</a></li>
+                    {% else %}
+                        <li><a href="{% url 'signin' %}">Sign In</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="hide-menu-bar">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+    </section>
+</body>
+</html>

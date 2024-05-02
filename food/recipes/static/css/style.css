@@ -1,0 +1,904 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/* HUNGRY SECTION */
+
+.header {
+    min-height: 110vh;
+    width: 100%;
+    background-image: url(/static/images/bg1.png);
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0; /* Added padding for better spacing */
+}
+.header .container{
+    padding-top: 100px; /* Adjusted padding for better spacing */
+}
+
+.header .food-img{
+    margin-top: -56px;
+}
+
+.make-dish-btn {
+    position: absolute;
+    bottom: 2px; /* Adjust as needed */
+    right: 280px; /* Adjust as needed */
+    background-color: #ff5361;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.make-dish-btn:hover {
+    background-color: #e04152;
+}
+
+.hide-menu-bar{
+    display: none;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+
+    .food-img {
+        width: 100%; /* Adjusted width for smaller screens */
+        max-width: none; /* Removed max-width for smaller screens */
+        margin-top: -35px; /* Adjusted margin top for smaller screens */
+    }
+    
+    .header {
+        padding: 50px 20px; /* Reduce padding on smaller screens */
+    }
+
+    .header .question{
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .header h2 {
+        font-size: 28px; /* Decrease font size for heading */
+    }
+
+    .header p {
+        margin-bottom: 40px; /* Reduce margin for paragraph */
+        font-size: 26px; /* Decrease font size for paragraph */
+    }
+
+    .make-dish-btn {
+        padding: 12px 30px; /* Adjust button padding */
+        font-size: 16px; /* Decrease font size for button */
+    }
+    .hide-menu-bar{
+        display: block;
+    }
+    .hide-menu-mobile{
+        display: none;
+    }
+    .hide-menu-mobile.active{
+        display: block;
+    }
+}
+
+/* END OF HUNGRY SECTION */
+
+
+/* ABOUT US SECTION */
+
+.header2{
+    min-height: 110vh;
+    width: 100%;
+    background-image: url(/static/images/bg44.png);
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+
+.abt-para{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    padding: 35px 30px 0 30px;
+    padding: 0 30px; /* Added padding for better spacing */
+}
+
+.title{
+    color: #3A2222;
+    font-family: 'Chelsea Market';
+    font-weight: 400;
+    font-size: 28px;
+    text-align: center;
+    padding-top: 50px;
+    margin-bottom: 30px; /* Added margin bottom for better spacing */
+}
+
+
+/* DRINKS SECTION */
+
+.header3 {
+    min-height: 110vh;
+    width: 100%;
+    background-image: url(/static/images/bg44.png);
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0; /* Added padding for better spacing */
+}
+
+.header3 .container{
+    padding-top: 65px;
+}
+
+.food-img{
+    float: right;
+    /* width: 526px; */
+    height: auto;
+    display: block;
+    margin: auto; /* Center align image */
+    width: 80%; /* Adjusted width for responsiveness */
+    max-width: 526px; /* Added max-width for better responsiveness */
+    border-radius: 90px 0px 0px 0px;
+    margin-top: -100px;
+    margin-left: 85px;
+}
+
+.question{
+    color: #3A2222;
+    font-family: 'Chelsea Market';
+    font-weight: 400;
+    font-size: 65px;
+    margin-bottom: 30px; /* Added margin bottom for better spacing */
+}
+
+.passage{
+    font-family: 'Montserrat';
+    font-size: 26px;
+    margin-top: 25px;
+    text-align: center;
+    padding: 0 30px; /* Added padding for better spacing */
+}
+
+.container.passage{
+    float: right;
+}
+
+/* Media query for smaller screens */
+
+@media only screen and (max-width: 768px) {
+    .header3 .food-img {
+        width: 100%; /* Adjusted width for smaller screens */
+        max-width: none; /* Removed max-width for smaller screens */
+        margin-top: 20px; /* Adjusted margin top for smaller screens */
+        margin-bottom: 30px;
+    }
+
+    .header3 .question {
+        font-size: 50px; /* Adjusted font size for smaller screens */
+        text-align: center;
+    }
+
+    .header3 .passage {
+        font-size: 26px; /* Adjusted font size for smaller screens */
+        margin-top: 30px;
+    }
+
+}
+
+/* END OF DRINKS SECTION */
+
+
+/* Media query for smaller screens */
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: 24px; /* Adjusted font size for smaller screens */
+    }
+
+    .abt-para {
+        font-size: 18px; /* Adjusted font size for smaller screens */
+    }
+}
+
+
+/* RECIPE SECTION */
+
+.recipe-container {
+    background-image: url(/static/images/bg5.png);
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 200px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#recipe-row{
+    padding-top: 35px;
+}
+
+.column {
+    flex: 1 0 25%;
+    max-width: 25%;
+    padding: 0 10px;
+}
+
+.recipe-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%; /* Adjust width as needed */
+    max-width: 300px; /* Maximum width of recipe card */
+}
+
+.recipe-container a:visited{
+    color: black;
+    text-decoration: none;
+}
+
+/* .recipe-container a:active{
+    text-decoration: none;
+}
+
+.recipe-card a:link{
+    text-decoration: none;
+} */
+
+.recipe-card img {
+    width: 100%;
+    height: 200px; /* Specify fixed height */
+    object-fit: cover; /* Ensure the image fills the container while preserving aspect ratio */
+    border-radius: 8px;
+}
+
+.recipe-card h3 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.recipe-card p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.recipe-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust box-shadow on hover */
+    transform: translateY(-5px); /* Move card slightly up on hover */
+    cursor: pointer;
+}
+
+.recipe-container H1{
+    color: rgba(58, 34, 34, 0.85);
+    font-family: 'Chelsea Market';
+    padding-bottom: 20px;
+    /* font-weight: 400;
+    font-size: 65px;
+    margin-bottom: 30px; */
+}
+
+.user-input-section {
+    background-color: #FFC038;
+    padding: 20px 0;
+    border-radius: 28px;
+}
+
+.user-input-section .row{
+    justify-content: space-evenly;
+}
+
+.user-input-section input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.user-input-section .submit-btn {
+    background-color: #FF5361;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.user-input-section .submit-btn:hover {
+    background-color: #E04152;
+}
+
+#cooking-btn{
+    padding-top: 20px;
+}
+
+.user-input-section .col-md-4 input[type="text"] {
+    margin-bottom: 10px; /* Adjust spacing as needed */
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+    .recipe-container .column {
+        flex: 1 0 50%;
+        max-width: 50%;
+    }
+
+    .recipe-card {
+        max-width: 100%; /* Adjust maximum width for smaller screens */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .recipe-container .column {
+        flex: 1 0 100%;
+        max-width: 100%;
+    }
+
+    .recipe-card {
+        max-width: 100%; /* Adjust maximum width for smaller screens */
+    }
+}
+
+/* END OF RECIPE SECTION */
+
+
+/* STEPS PAGE */
+
+.steps-container {
+    background-image: url(/static/images/bg5.png);
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 200px;
+}
+
+.new-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.recipe-image {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.recipe-image img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    margin-left: 100px;
+}
+
+.recipe-details {
+    flex: 1;
+}
+
+.recipe-details h1 {
+    font-family: "Comic Neue", cursive;
+    font-size: 40px;
+    font-weight: 1px;
+    margin-right: 10px;
+    margin-bottom: 35px;
+    padding-left: 20px;
+    
+}
+
+.recipe-details p{
+    font-family: "Comic Neue", cursive;
+    font-size: 35px;
+    font-weight: 700;
+    padding-left: 20px;
+    margin-bottom: 1px;
+}
+
+.Steps{
+    padding-left: 120px;
+    padding-top: 20px;
+}
+
+.Steps li{
+    list-style-type: circle; 
+}
+
+.Steps h2{
+font-family: "Comic Neue", cursive;
+font-size: 40px;
+font-weight: 700;
+padding-bottom: -1px;
+}
+
+.Steps ul{
+    font-family: "Comic Neue", cursive;
+    font-size: 30px;
+}
+
+.Steps .submit-btn {
+    background-color: #FF5361;
+    color: #fff;
+    padding: 10px 20px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.Steps .submit-btn:hover {
+    background-color: #E04152;
+}
+
+#back-btn{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* END OF STEPS PAGE */
+
+
+/* NAVBAR */
+
+nav{
+     font-family:'Montserrat';
+     font-weight: 450;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 20px 7%;
+     font-size: 23px;
+     background-color: #24262b;
+     height: 110px;
+}
+
+.nav-section{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+.logo {
+     width: 110px;
+     cursor: pointer;    
+}
+.bottom-logo {
+    width: 110px;
+    cursor: pointer;    
+}
+.nav-links li{
+    list-style: none;
+    display: inline-block;
+    margin: 10px 30px;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+}
+
+.container {
+    padding: 0 7%;
+    padding-top: 78px;
+    align-items: center;
+}
+
+.menu-toggle {
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    display: none; /* Initially hide on larger screens */
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        background-color: #24262b;
+        position: absolute;
+        top: 109px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show the toggle button on smaller screens */
+        color: #fff;
+    }
+
+}
+
+/* END OF NAVBAR */
+
+
+/* Sign-up page */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.signup-container {
+    display: flex;
+    height: 125vh;
+    background-size: cover;
+    padding-top: 110px; /* Adjusted padding for top spacing */
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('transperent/1.png');
+}
+
+.left-section p {
+    margin-bottom: 20px; 
+    font-family: "Kalam", cursive;
+    font-size: 43px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 80px; /* Adjust top margin */
+    margin-bottom: 80px; /* Adjust bottom margin */
+}
+
+.left-section img {
+    width: 60%; /* Adjusted width */
+    margin-top: 80px; /* Adjusted margin */
+    margin-bottom: 80px; /* Adjusted margin */
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 198, 55, 1);
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    font-family: arial;
+    padding: 60px; /* Adjusted padding */
+}
+
+.form-container {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    padding: 40px;
+    /* border-radius: 10px; */
+    text-align: center;
+    width: 450px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between; /* Aligns the fields in the same row */
+}
+
+.form-group {
+    flex-basis: 48%; /* Adjust this value to your preference */
+    margin-bottom: 30px; /* Adjust margin */
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px; /* Adjusted font size */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 14px; /* Adjusted padding */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+p {
+    margin-top: 40px; /* Adjust top margin */
+    margin-bottom: 40px; /* Adjust bottom margin */
+}
+
+p a {
+    color: blue;
+    text-decoration: none;
+    font-size: 18px; /* Adjusted font size */
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .signup-container {
+        flex-direction: column;
+        height: auto; /* Remove fixed height */
+        padding-top: 60px; /* Adjust padding for top spacing */
+    }
+
+    .left-section p {
+        margin-top: 100px; /* Adjust top margin */
+        margin-bottom: 30px; /* Adjust bottom margin */
+        font-size: 30px; /* Decrease font size */
+        text-align: center;
+    }
+
+    .left-section img {
+        width: 80%; /* Adjusted width */
+        margin-top: 20px; /* Adjusted margin */
+        margin-bottom: 30px; /* Adjusted margin */
+    }
+
+    .right-section {
+        padding: 20px; /* Adjusted padding */
+        border-radius: 0; /* Remove border radius */
+        width: 100%; /* Adjusted width */
+    }
+
+    .form-container {
+        width: 100%; /* Adjusted width */
+    }
+
+    .form-container h2 {
+        font-size: 24px; /* Decrease font size */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    .form-group label {
+        font-size: 16px; /* Decrease font size */
+    }
+
+    .form-group input {
+        width: 100%; /* Adjusted width */
+        padding: 12px; /* Adjusted padding */
+    }
+
+    button[type="submit"] {
+        padding: 12px; /* Adjusted padding */
+        font-size: 16px; /* Decrease font size */
+    }
+
+    p {
+        margin-top: 15px; /* Adjust top margin */
+        margin-bottom: 15px; /* Adjust bottom margin */
+    }
+
+    p a {
+        font-size: 16px; /* Decrease font size */
+    }
+}
+
+
+/* END OF SIGN-UP PAGE */
+
+
+/*------FOOTER-------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body{
+	line-height: 1.5;
+	font-family: 'Montserrat';
+}
+
+.container{
+	max-width: 1440px;
+	margin:auto;
+    /* height: 330px; */
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+    /* margin-left: 125px; */
+    margin-left: 15px;
+    margin-right: 15px;
+}
+ul{
+	list-style: none;
+}
+.footer{
+	background-color: rgba(0, 0, 0, 0.78);
+    border: 1px solid black;
+    padding: 70px 0;
+    color: #ffffff;
+    /* padding: 5px 0 10px 0; */
+}
+
+.footer-col{
+   width: 100%;
+   padding: 0 15px;
+   margin-bottom: 30px;
+}
+
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/* .active{
+    position: relative;
+}
+.active::after{
+    content: '';
+    background: #fff;
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 2px;
+} */
+
+@media only screen and (min-width: 768px) {
+    .footer-col{
+        width: 25%; /* Reset back to original width for larger screens */
+    }
+}
+
+/* END OF FOOTER */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-link {
+  color: #007bff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-link:hover {
+  background-color: #f0f0f0;
+}
+
+.current {
+  margin: 0 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+
+
+
+.hello-text {
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+

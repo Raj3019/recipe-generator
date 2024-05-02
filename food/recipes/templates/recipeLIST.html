@@ -1,0 +1,266 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISH DISCOVERY</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Chelsea Market' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-chef-32.png' %}">
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% include 'navbar2.html' %}
+    <!-- <section class="nav-section">
+        <nav id="navBar">
+            <a href="index.html"><img src="Images/logo white.png" class="logo"></a>
+            <div id="mainListDiv" class="main_list hide-menu-mobile">
+                <ul class="nav-links">
+                    <li><a href="#">RECIPES</a></li>
+                    <li><a href="index.html#head2">ABOUT</a></li>
+                    <li><a href="login.html">SIGN IN</a></li>
+                </ul>
+            </div>
+            <div class="hide-menu-bar">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+    </section> -->
+
+    <!-- Recipe Section -->
+
+    <div class="recipe-container">
+        <h1>LET'S MAKE A DISH</h1> 
+        <!-- Yellow section for user inputs -->
+        <section class="user-input-section">
+            <form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="search" class="form-label">Enter Ingredients:</label>
+                        <input type="search" class="form-control" id="ingredients" name="ingredients_contain" placeholder="Enter Ingredients"/>
+                    </div>
+                    <label for="search" class="form-label">Enter cuisine:</label>
+                    <input type="search" class="form-control" id="cuisine" name="cuisine_name" placeholder="Enter cuisine"/>
+                </div>
+                <div class="row" id="cooking-btn">
+                    <div class="col-md-12 text-center">
+                        <button class="submit-btn">Start Cooking</button>
+                    </div>
+                </div>
+            </div>
+            </form>    
+        </section>
+
+        <div class="row" id="recipe-row">
+            {% for recipe in page_obj %}
+            <div class="column">
+            <a href="{% url 'recipe_details' recipe.id %}" target="_blank" class="recipe-link">
+            <div class="recipe-card">
+                <img src="{{ recipe.imageurl }}" alt="Recipe Image">
+                <hr>
+                <h3>Name: {{ recipe.recipe_name }}</h3>
+                <hr>
+                <h4>Cuisine: {{ recipe.cuisine }}</h4>
+            </div>
+        </a>
+    </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    
+    <div class="pagination">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+      <a href="?page=1" class="pagination-link">&laquo; First</a>
+      <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Previous</a>
+    {% endif %}
+  
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+  
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Next</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Last &raquo;</a>
+    {% endif %}
+  </span>
+</div>
+
+
+    
+    
+    
+    
+            <!-- More columns and cards here -->
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe2.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 2</h3>#}
+{#                        <p>Description of Recipe 2</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+        
+        <!-- More rows here -->
+{#        <div class="row">#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe1.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 1</h3>#}
+{#                        <p>Description of Recipe 1</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <!-- More columns and cards here -->#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe2.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 2</h3>#}
+{#                        <p>Description of Recipe 2</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe3.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 3</h3>#}
+{#                        <p>Description of Recipe 3</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe1.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 1</h3>#}
+{#                        <p>Description of Recipe 1</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <!-- More columns and cards here -->#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe2.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 2</h3>#}
+{#                        <p>Description of Recipe 2</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe3.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 3</h3>#}
+{#                        <p>Description of Recipe 3</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe1.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 1</h3>#}
+{#                        <p>Description of Recipe 1</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <!-- More columns and cards here -->#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe2.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 2</h3>#}
+{#                        <p>Description of Recipe 2</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="column">#}
+{#                <a href="steps.html" target="_blank">#}
+{#                    <div class="recipe-card">#}
+{#                        <img src="recipe/recipe3.jpg" alt="Recipe 1">#}
+{#                        <h3>Recipe 3</h3>#}
+{#                        <p>Description of Recipe 3</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+    <!-- End of Recipe Section -->
+
+<!-------footer------>
+    
+    
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">company</a></li>
+                        <li><a href="#">staff</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms and Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">cusine</a></li>
+                        <li><a href="#">recipes</a></li>
+                        <li><a href="#">drinks</a></li>
+                        <li><a href="#">make a dish</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">+91 8600666455</a></li>
+                        <li><a href="#">project@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    </div>
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a520378870.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

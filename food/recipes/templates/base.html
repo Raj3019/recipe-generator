@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="script.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-chef-32.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="nav-section">
+        <nav id="navBar">
+            <a href="/"><img src="{% static 'images/logowhite.png' %}" alt="Logo" class="logo"></a>
+            <div id="mainListDiv" class="main_list hide-menu-mobile">
+                <ul class="nav-links">
+                    <li><a href="{% url 'food' %}">RECIPES</a></li>
+                    <li><a href="{% url 'index' %}#head2">ABOUT</a></li>
+                    {% if user.is_authenticated %}
+                        <li><span class="hello-text">Hello {{ request.session.username }}</span></li>
+                        <li><a href="/signout">Sign Out</a></li>
+                    {% else %}
+                        <li><a href="{% url 'signin' %}">Sign In</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="hide-menu-bar">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+    </section>
+        {% block messages %}
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                  {{ message }}
+                  <button type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                          aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endblock %}
+    
+
+    {% block content %}
+    	
+    {% endblock %}
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms and Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Cusine</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">Rrinks</a></li>
+                    <li><a href="#">Make a dish</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="#">+91 8600666455</a></li>
+                    <li><a href="#">project@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
