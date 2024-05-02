@@ -9,11 +9,11 @@
 <body>
 
 {% block messages %}
-	
+
 {% endblock %}
 
 {% block content %}
-    
+
     <div class="signup-container">
         <div class="left-section">
             <p>We are ready to <br> serve you !!!</p>
@@ -51,6 +51,7 @@
                         <input type="password" id="confirm-password" name="password2" required>
                     </div>
                     <button type="submit">Sign Up</button>
+                    {{ form.non_field_errors }}
                 </form>
                 <p>Already have an account? <a href="{% url 'signin' %}">Login</a></p>
             </div>

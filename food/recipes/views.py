@@ -98,6 +98,7 @@ class FoodView(LoginRequiredMixin, ListView):
 
 from django.views.generic.edit import FormView
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 
 class SignUpView(FormView):
