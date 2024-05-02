@@ -96,65 +96,36 @@ class FoodView(LoginRequiredMixin, ListView):
         
 
 
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
 
-def signup(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        fname = request.POST['fname']
-        lname = request.POST['lname']
-        email = request.POST['email']
-        pass1 = request.POST['pass1']
-        pass2 = request.POST['pass2']
 
-        if User.objects.filter(username=username):
-            messages.error(request,"Username Already Exist!. Try something other username")
-            return render(request, 'signup3.html')
+class SignUpView(FormView):
+    template_name = "signup3.html"
+    form_class = UserCreationForm
+    success_url = reverse_lazy("signin")
 
-        if User.objects.filter(email=email):
-            messages.error(request,"Email Alreday Exist")
-            return render(request, 'signup3.html')
+    def form_valid(self, form):
+        user = form.save()
+        messages.success(request, "Your Account has been successfully created. We have send you a confirmation email, "
+                                  "please confim your email in order to activate your account")
 
-        if len(username) > 10 and username != fname:
-            messages.error(request,"Username should be less than 10 Characters")
-            return render(request, 'signup3.html')
-
-        if pass1 != pass2:
-            messages.error(request,"Password Didn't Match")
-            return render(request, 'signup3.html')
-
-        if not username.isalnum():
-            messages.error(request,"Username should have Alpha-numeric")
-            return render(request, 'signup3.html')
-
-        # if not email.endswith('@gmail.com'):
-        #     messages.error(request,"Only Gmail accounts are allowed.")
-        #     return redirect('index')
-
-        myuser = User.objects.create_user(username,email,pass1)
-        myuser.first_name = fname
-        myuser.last_name = lname
-        myuser.is_active = False
-
-        myuser.save()
-        messages.success(request,"Your Account has been successfully created. We have send you a confirmation email, "
-                                 "please confim your email in order to activate your account")
-
-        #SENDING MAIL
+        # SENDING MAIL
         subject = "Welcome to Dish Discovery"
         email_message = (f"Hello {myuser.first_name} \nWelcome to Dish Discovery \nWe have send you a confirmation "
-                    f"link on your registered email, Please click on the link in order to activate your account. \n\nThanking you \nTeam Dish Discovery")
+                         f"link on your registered email, Please click on the link in order to activate your account. \n\nThanking you \nTeam Dish Discovery")
         from_email = settings.EMAIL_HOST_USER
         to_user = [myuser.email]
-        send_mail(subject,email_message,from_email,to_user, fail_silently=True)
+        send_mail(subject, email_message, from_email, to_user, fail_silently=True)
 
-        #CONFIRMATION EMAIL
+        # CONFIRMATION EMAIL
         current_site = get_current_site(request)
         email_subject = "Confirm Your Email @Dish Discovery!"
-        email_message2 = render_to_string('email_confirmation.html',{
-            'name':myuser.first_name,
-            'domain':current_site.domain,
-            'uid':urlsafe_base64_encode(force_bytes(myuser.pk)),
-            'token':generate_token.make_token(myuser)
+        email_message2 = render_to_string('email_confirmation.html', {
+            'name': myuser.first_name,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
+            'token': generate_token.make_token(myuser)
         })
         email = EmailMessage(
             email_subject,
@@ -165,10 +136,87 @@ def signup(request):
         email.fail_silently = True
         email.send()
 
-
         return redirect("signin")
+        # send your mails
+        # set your messages
+        return super().form_valid(form)
 
-    return render(request,'signup3.html')
+
+
+
+
+# def signup(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         fname = request.POST['fname']
+#         lname = request.POST['lname']
+#         email = request.POST['email']
+#         pass1 = request.POST['pass1']
+#         pass2 = request.POST['pass2']
+#
+#         if User.objects.filter(username=username):
+#             messages.error(request,"Username Already Exist!. Try something other username")
+#             return render(request, 'signup3.html')
+#
+#         if User.objects.filter(email=email):
+#             messages.error(request,"Email Alreday Exist")
+#             return render(request, 'signup3.html')
+#
+#         if len(username) > 10 and username != fname:
+#             messages.error(request,"Username should be less than 10 Characters")
+#             return render(request, 'signup3.html')
+#
+#         if pass1 != pass2:
+#             messages.error(request,"Password Didn't Match")
+#             return render(request, 'signup3.html')
+#
+#         if not username.isalnum():
+#             messages.error(request,"Username should have Alpha-numeric")
+#             return render(request, 'signup3.html')
+#
+#         # if not email.endswith('@gmail.com'):
+#         #     messages.error(request,"Only Gmail accounts are allowed.")
+#         #     return redirect('index')
+#
+#         myuser = User.objects.create_user(username,email,pass1)
+#         myuser.first_name = fname
+#         myuser.last_name = lname
+#         myuser.is_active = False
+#
+#         myuser.save()
+#         messages.success(request,"Your Account has been successfully created. We have send you a confirmation email, "
+#                                  "please confim your email in order to activate your account")
+#
+#         #SENDING MAIL
+#         subject = "Welcome to Dish Discovery"
+#         email_message = (f"Hello {myuser.first_name} \nWelcome to Dish Discovery \nWe have send you a confirmation "
+#                     f"link on your registered email, Please click on the link in order to activate your account. \n\nThanking you \nTeam Dish Discovery")
+#         from_email = settings.EMAIL_HOST_USER
+#         to_user = [myuser.email]
+#         send_mail(subject,email_message,from_email,to_user, fail_silently=True)
+#
+#         #CONFIRMATION EMAIL
+#         current_site = get_current_site(request)
+#         email_subject = "Confirm Your Email @Dish Discovery!"
+#         email_message2 = render_to_string('email_confirmation.html',{
+#             'name':myuser.first_name,
+#             'domain':current_site.domain,
+#             'uid':urlsafe_base64_encode(force_bytes(myuser.pk)),
+#             'token':generate_token.make_token(myuser)
+#         })
+#         email = EmailMessage(
+#             email_subject,
+#             email_message2,
+#             settings.EMAIL_HOST_USER,
+#             [myuser.email],
+#         )
+#         email.fail_silently = True
+#         email.send()
+#
+#
+#         return redirect("signin")
+#
+#     return render(request,'signup3.html')
 
 def signin(request):
     if request.method == 'POST':
