@@ -471,7 +471,7 @@ nav{
 }
 
 .nav-section{
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     width: 100%;
     z-index: 1000; /* Ensure the navbar is above other content */

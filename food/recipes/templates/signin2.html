@@ -57,13 +57,16 @@
                 <h2>SIGN IN</h2>
                 <form action="#" method="POST">
                     {% csrf_token %}
+                    {{ form.non_field_errors }}
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" required>
+{#                        <label for="username">Username</label>#}
+{#                        <input type="text" id="username" name="username" required>#}
+                        {{ form.username.as_field_group }}
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="pass1" required>
+{#                        <label for="password">Password</label>#}
+{#                        <input type="password" id="password" name="pass1" required>#}
+                        {{ form.password.as_field_group }}
                     </div>
                     <button type="submit">Sign in</button>
                 </form>

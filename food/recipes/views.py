@@ -13,6 +13,8 @@ from .tokens import generate_token
 from django.contrib.auth.decorators import login_required
 from .models import FinalRecipe
 
+from .forms import MyUserCreationForm, LoginForm
+from django.contrib.auth.views import LoginView
 
 from django.core.paginator import Paginator
 from django.views.generic import ListView
@@ -103,36 +105,38 @@ from django.urls import reverse_lazy
 
 class SignUpView(FormView):
     template_name = "signup3.html"
-    form_class = UserCreationForm
+    form_class = MyUserCreationForm
     success_url = reverse_lazy("signin")
 
     def form_valid(self, form):
-        user = form.save()
-        messages.success(request, "Your Account has been successfully created. We have send you a confirmation email, "
+        user = form.save(commit=False)
+        user.is_active = False
+        user.save()
+        messages.success(self.request, "Your Account has been successfully created. We have send you a confirmation email, "
                                   "please confim your email in order to activate your account")
 
         # SENDING MAIL
         subject = "Welcome to Dish Discovery"
-        email_message = (f"Hello {myuser.first_name} \nWelcome to Dish Discovery \nWe have send you a confirmation "
+        email_message = (f"Hello {user.first_name} \nWelcome to Dish Discovery \nWe have send you a confirmation "
                          f"link on your registered email, Please click on the link in order to activate your account. \n\nThanking you \nTeam Dish Discovery")
         from_email = settings.EMAIL_HOST_USER
-        to_user = [myuser.email]
+        to_user = [user.email]
         send_mail(subject, email_message, from_email, to_user, fail_silently=True)
 
         # CONFIRMATION EMAIL
-        current_site = get_current_site(request)
+        current_site = get_current_site(self.request)
         email_subject = "Confirm Your Email @Dish Discovery!"
         email_message2 = render_to_string('email_confirmation.html', {
-            'name': myuser.first_name,
+            'name': user.first_name,
             'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
-            'token': generate_token.make_token(myuser)
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': generate_token.make_token(user)
         })
         email = EmailMessage(
             email_subject,
             email_message2,
             settings.EMAIL_HOST_USER,
-            [myuser.email],
+            [user.email],
         )
         email.fail_silently = True
         email.send()
@@ -219,24 +223,32 @@ class SignUpView(FormView):
 #
 #     return render(request,'signup3.html')
 
-def signin(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        pass1 = request.POST['pass1']
 
-        user = authenticate(username=username, password=pass1)
-        print(user)
 
-        if user is not None:
-            login(request, user)
-            fname = user.first_name
-            request.session['username'] = username
-            return render(request, 'index2.html', {'fname': fname})
-        else:
-            messages.error(request, "Account not activated. Please check your email.")
-            return redirect('index')
+class Signin(LoginView):
+    authentication_form = LoginForm
+    template_name = "signin2.html"
 
-    return render(request,'signin2.html')
+
+
+# def signin(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         pass1 = request.POST['pass1']
+#
+#         user = authenticate(username=username, password=pass1)
+#         print(user)
+#
+#         if user is not None:
+#             login(request, user)
+#             fname = user.first_name
+#             request.session['username'] = username
+#             return render(request, 'index2.html', {'fname': fname})
+#         else:
+#             messages.error(request, "Account not activated. Please check your email.")
+#             return redirect('signin')
+#
+#     return render(request,'signin2.html')
 
 def signout(request):
     logout(request)

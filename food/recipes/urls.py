@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 
 from django.urls import path
 from . import views
-from .views import FoodView, SignUpView
+from .views import FoodView, SignUpView, Signin
 
 urlpatterns = [
     path('',views.index,name='index'),
@@ -14,7 +14,9 @@ urlpatterns = [
 
     path('signup/', SignUpView.as_view(), name='signup'),
 
-    path('signin',views.signin,name='signin'),
+    # path('signin',views.signin,name='signin'),
+    path('signin/', Signin.as_view(), name='signin'),
+
     path('signout',views.signout,name='signout'),
     path('activate/<uidb64>/<token>', views.activate, name='activate'),
 
